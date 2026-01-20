@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - User Details</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👥 User Details Collection</h1>
+            <div class="user-info">
+                <span id="userEmail">Loading...</span>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+            </div>
+        </header>
+
+        <!-- Add User Details Form -->
+        <div class="card">
+            <h2>➕ Add Your Details</h2>
+            <form id="detailsForm">
+                <div class="form-group">
+                    <input type="text" id="userAge" placeholder="Age" required>
+                    <input type="text" id="userCity" placeholder="City" required>
+                    <select id="userCountry" required>
+                        <option value="">Select Country</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="India">India</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <textarea id="userBio" placeholder="Tell us about yourself..." rows="3"></textarea>
+                <button type="submit" class="btn">Submit Details</button>
+            </form>
+            <div id="formMessage" class="message"></div>
+        </div>
+
+        <!-- Display All Users Table -->
+        <div class="card">
+            <h2>📋 All Registered Users</h2>
+            <div class="table-container">
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Bio</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Data will be inserted here by JavaScript -->
+                        <tr>
+                            <td colspan="7">Loading users...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="tableMessage" class="message"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script src="database.js"></script>
+</body>
+</html>
